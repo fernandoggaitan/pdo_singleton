@@ -10,7 +10,7 @@ class Conexion {
     private static $instancia = null;
     private function __construct() {
         try {
-            self::$instancia = new PDO($this->tipo_de_base . ':host=' . $this->host . ';dbname=' . $this->nombre_de_base, $this->usuario, $this->contrasena);
+            self::$instancia = new PDO("{$this->tipo_de_base}:dbname={$this->nombre_de_base};host={$this->host};charset=utf8", $this->usuario, $this->contrasena);
         } catch (PDOException $e) {
             echo 'Ha surgido un error y no se puede conectar a la base de datos. Detalle: ' . $e->getMessage();
             exit;
